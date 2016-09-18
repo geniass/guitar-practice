@@ -1,0 +1,24 @@
+<h2>Previous Minute Changes</h2>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% if recent_minute_changes %}
+  <ul>
+    {% for change in recent_minute_changes %}
+      <li><a href="{% url 'minute_changes:detail' change.id %}">{{ change }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No minute changes performed.</p>
+{% endif %}
+
+<h2>Practise Now!</h2>
+{% if chord_pairs %}
+  <ul>
+    {% for pair in chord_pairs %}
+      <li><a href="{% url 'minute_changes:practise' pair.id %}">{{ pair }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Not enough chords have been defined! Please add at least two</p>
+{% endif %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<script type="text/javascript" src="{% static "js/easytimer.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/practise.js" %}"></script>
+
+<h3>Practise {{ chord_pair }}</h3>
+
+<div id="timer"><div class="values">
+  <span class="minutes">01</span><span>:</span>
+  <span class="seconds">00</span>
+</div></div>
+<button id="start-btn">Start</button>
+
+<form action="{% url 'minute_changes:practise' chord_pair.id %}" method="POST">
+  {% csrf_token %}
+  <input type="number" name="changes" min="0" value="0">
+  <input type="submit" id="changes-submit" value="Submit" disabled />
+</form>
+
+{% endblock content %}
