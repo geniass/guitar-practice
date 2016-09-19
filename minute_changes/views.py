@@ -5,13 +5,17 @@ from django.urls import reverse
 from datetime import datetime
 import sys
 
+from django.db.models import Max
 from .models import MinuteChanges, ChordPair
 
 def index(req):
     recent_minute_changes = MinuteChanges.objects.order_by('-date')[:5]
+    # sort the chord pairs by the maximum number of changes performed for each
+    # pair, so that the worst ones appear at the top
+    worst_chord_pairs = ChordPair.objects.annotate(max_changes=Max('minutechanges__changes')).order_by('max_changes')
     context = {
         'recent_minute_changes': recent_minute_changes,
-        'chord_pairs': ChordPair.objects.all()
+        'chord_pairs': worst_chord_pairs
     }
     return render(req, 'minute_changes/index.html', context)
 

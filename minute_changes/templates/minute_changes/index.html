@@ -13,10 +13,12 @@
 {% endif %}
 
 <h2>Practise Now!</h2>
+<p>Your worst chord pairs (lowest number of changes, or not yet practiced!) show up first</p>
+<p>Practice these ones first!</p>
 {% if chord_pairs %}
   <ul>
     {% for pair in chord_pairs %}
-      <li><a href="{% url 'minute_changes:practise' pair.id %}">{{ pair }}</a></li>
+      <li><a href="{% url 'minute_changes:practise' pair.id %}">{{ pair }} ({{ pair.max_changes|default:"0" }} changes)</a></li>
     {% endfor %}
   </ul>
 {% else %}
