@@ -17,6 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^chords/', include('chords.urls')),
     url(r'^minute_changes/', include('minute_changes.urls')),
+    url(r'^chord_recognition/', include('chord_recognition.urls')),
     url(r'^admin/', admin.site.urls),
 ]

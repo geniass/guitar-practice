@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h3>Practise {{ type }}</h3>
+<div>
+  <span>Chord Palette: </span>
+  <span>{{ chord_palette|join:", " }}</span>
+</div>
+
+<div>
+  {% for chord in chords %}
+    <div>
+      <span>{{ chord }}</span>
+      <span>dfsdf</span>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

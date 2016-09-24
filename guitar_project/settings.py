@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chords.apps.ChordsConfig',
     'minute_changes.apps.MinuteChangesConfig',
+    'chord_recognition.apps.ChordRecognitionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
